@@ -1,3 +1,54 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.hero-card {
+  text-decoration: none;
+  color: initial;
+  transition: box-shadow 300ms ease;
+}
+
+.hero-card:hover {
+  color: initial;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.hero-card:hover .see-more::after {
+  width: 100%;
+}
+
+.hero-card img {
+  z-index: 1;
+}
+
+.hero-card .img-overlay {
+  background-color: black;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 500ms ease;
+}
+
+.hero-card:hover .img-overlay {
+  opacity: 0.2;
+}
+
+.see-more {
+  color: dodgerblue;
+}
+
+.see-more::after {
+  content: '';
+  background-color: dodgerblue;
+  display: block;
+  height: 3px;
+  width: 30%;
+  transition: width 200ms ease;
+}
