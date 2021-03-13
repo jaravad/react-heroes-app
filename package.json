@@ -14,8 +14,10 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
+    "start": "react-scripts start",
+    "predeploy": "react-scripts build && cp build/index.html build/200.html",
+    "deploy": "surge build/ https://react-heroes-app.surge.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

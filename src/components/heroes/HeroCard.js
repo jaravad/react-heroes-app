@@ -43,7 +43,7 @@ export const HeroCard = ({
             Also has appeared as <em>{characters}</em>
           </p>
 
-          <div class="alert alert-light border small" role="alert">
+          <div className="alert alert-light border small" role="alert">
             First appeared on: <br />
             <span className="fw-medium">'{first_appearance}'</span>
           </div>
