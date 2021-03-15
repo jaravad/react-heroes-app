@@ -19,7 +19,7 @@ export const HeroesList = ({ publisher }) => {
   return (
     <div id="masonryGrid" className="row" ref={ref}>
       {heroes.map((hero) => {
-        return <HeroCard key={hero.id} {...hero} />;
+        return <HeroCard key={hero.id} hero={hero} />;
       })}
     </div>
   );
