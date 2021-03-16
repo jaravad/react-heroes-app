@@ -9,7 +9,7 @@ export const HeroInfo = ({
 }) => {
   return (
     <article className={className}>
-      <h5 className="mb-1">{superhero}</h5>
+      <h3>{superhero}</h3>
 
       <span
         className={`badge ${
@@ -21,7 +21,7 @@ export const HeroInfo = ({
 
       <p className="small lh-sm text-muted mb-2">Also known as {alter_ego}</p>
 
-      {alter_ego !== characters && (
+      {(alter_ego !== characters || !showMore) && (
         <p className="lh-sm">
           Also has appeared as <em>{characters}</em>
         </p>

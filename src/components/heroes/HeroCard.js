@@ -16,7 +16,7 @@ export const HeroCard = ({ hero }) => {
             alt={hero.superhero}
           />
         </div>
-        {/* TODO turn the following code into a component */}
+
         <HeroInfo {...hero} className="px-3 py-4 col-7" showMore />
       </Link>
     </div>
