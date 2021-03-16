@@ -43,6 +43,17 @@ export const NavBar = () => {
               </NavLink>
             </li>
 
+            <li className="nav-item">
+              <NavLink
+                exact
+                activeClassName="active"
+                className="nav-link"
+                to="/search"
+              >
+                Search
+              </NavLink>
+            </li>
+
             <li className="nav-item ms-lg-auto">
               <NavLink
                 exact
@@ -53,17 +64,6 @@ export const NavBar = () => {
                 Logout
               </NavLink>
             </li>
-            {/* <li className="nav-item">
-              <NavLink
-                exact
-                activeClassName="active"
-                className="nav-link"
-                href="#"
-              >
-                Features
-              </NavLink>
-            </li>
-             */}
           </ul>
         </div>
       </div>
