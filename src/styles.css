@@ -52,3 +52,51 @@ body {
   width: 30%;
   transition: width 200ms ease;
 }
+
+/* =========== Animations =========== */
+
+.fade-anim {
+  animation: fade 400ms ease;
+}
+
+.from-bottom-anim {
+  animation: from-bottom 600ms ease;
+}
+
+.from-right-anim {
+  animation: from-right 600ms ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes from-bottom {
+  from {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes from-right {
+  from {
+    transform: translateX(10%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

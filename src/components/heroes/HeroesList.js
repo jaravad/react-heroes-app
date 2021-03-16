@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useMemo } from 'react';
 
 import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher';
 import { HeroCard } from './HeroCard';
@@ -6,7 +6,7 @@ import Masonry from 'masonry-layout';
 
 export const HeroesList = ({ publisher }) => {
   const ref = useRef(null);
-  const heroes = getHeroesByPublisher(publisher);
+  const heroes = useMemo(() => getHeroesByPublisher(publisher), [publisher]);
 
   // initialize masonry layout
   useLayoutEffect(() => {
