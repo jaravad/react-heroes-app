@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { HeroCard } from './HeroCard';
 import Masonry from 'masonry-layout';
 
-export const HeroesList = memo(function Heroeslist({ heroes }) {
+export const HeroesList = memo(function HeroesList({ heroes }) {
   const ref = useRef(null);
 
   // initialize masonry layout

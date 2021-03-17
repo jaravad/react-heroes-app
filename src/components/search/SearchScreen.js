@@ -1,19 +1,23 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
+import { AnimatePresence } from 'framer-motion';
 
 import { useForm } from '../../hooks/useForm';
 
 import { HeroesList } from '../heroes/HeroesList';
 import { getHeroesByName } from '../../selectors/getHeroesByName';
+import { Alert } from './Alert';
 
 export const SearchScreen = ({ history }) => {
   // * query strings are stored in location.search
   const location = useLocation();
   // * parse query strings
-  const { q = '' } = queryString.parse(location.search);
+  const q = queryString.parse(location.search).q;
 
-  const [{ searchTerm }, handleChange] = useForm({ searchTerm: q });
+  const [{ searchTerm }, handleChange] = useForm({
+    searchTerm: q === undefined ? '' : q,
+  });
 
   const heroes = useMemo(() => getHeroesByName(q), [q]);
 
@@ -21,6 +25,7 @@ export const SearchScreen = ({ history }) => {
     e.preventDefault();
     history.push(`?q=${searchTerm}`);
   };
+  // TODO: check unmount animations
 
   return (
     <div className="fade-anim">
@@ -46,7 +51,15 @@ export const SearchScreen = ({ history }) => {
         </form>
       </div>
 
-      <HeroesList heroes={heroes} className="fade-anim" />
+      <AnimatePresence>
+        {q === undefined ? (
+          <Alert type="info" message="Start searching!" />
+        ) : heroes.length === 0 ? (
+          <Alert type="warning" message="Not found!" />
+        ) : (
+          <HeroesList heroes={heroes} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
