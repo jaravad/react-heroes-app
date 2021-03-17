@@ -1,10 +1,19 @@
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import { useForm } from '../../hooks/useForm';
 
-export const SearchScreen = () => {
-  const [{ searchTerm }, handleChange] = useForm({ searchTerm: '' });
+export const SearchScreen = ({ history }) => {
+  // * query strings are stored in location.search
+  const location = useLocation();
+  // * parse query strings
+  const { q = '' } = queryString.parse(location.search);
 
-  const handleSubmit = (e) => {
+  const [{ searchTerm }, handleChange] = useForm({ searchTerm: q });
+  console.log({ q });
+
+  const handleSearch = (e) => {
     e.preventDefault();
+    history.push(`?q=${searchTerm}`);
   };
 
   return (
@@ -14,7 +23,7 @@ export const SearchScreen = () => {
         <form
           action=""
           className="d-flex align-items-center col-md-6 col-xl-4"
-          onSubmit={handleSubmit}
+          onSubmit={handleSearch}
         >
           <input
             autoComplete="off"
