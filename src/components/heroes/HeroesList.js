@@ -1,4 +1,5 @@
 import { useRef, useLayoutEffect, memo } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 import { HeroCard } from './HeroCard';
 import Masonry from 'masonry-layout';
@@ -15,10 +16,12 @@ export const HeroesList = memo(function Heroeslist({ heroes }) {
   }, [heroes]);
 
   return (
-    <div id="masonryGrid" className="row" ref={ref}>
-      {heroes.map((hero) => {
-        return <HeroCard key={hero.id} hero={hero} />;
-      })}
-    </div>
+    <AnimatePresence>
+      <div id="masonryGrid" className="row" ref={ref}>
+        {heroes.map((hero) => {
+          return <HeroCard key={hero.id} hero={hero} />;
+        })}
+      </div>
+    </AnimatePresence>
   );
 });

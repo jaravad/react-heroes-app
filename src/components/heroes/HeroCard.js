@@ -1,10 +1,16 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { HeroInfo } from './HeroInfo';
+import { motion } from 'framer-motion';
 
 export const HeroCard = memo(function HeroCard({ hero }) {
   return (
-    <div className="col-md-6 col-xl-4 p-3">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="col-md-6 col-xl-4 p-3"
+    >
       <Link
         to={`/hero/${hero.id}`}
         className="row g-0 border rounded overflow-hidden shadow-sm hero-card"
@@ -20,6 +26,6 @@ export const HeroCard = memo(function HeroCard({ hero }) {
 
         <HeroInfo {...hero} className="px-3 py-4 col-7" showMore />
       </Link>
-    </div>
+    </motion.div>
   );
 });
