@@ -1,6 +1,11 @@
+import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
+
 import { useForm } from '../../hooks/useForm';
+
+import { HeroesList } from '../heroes/HeroesList';
+import { getHeroesByName } from '../../selectors/getHeroesByName';
 
 export const SearchScreen = ({ history }) => {
   // * query strings are stored in location.search
@@ -9,7 +14,8 @@ export const SearchScreen = ({ history }) => {
   const { q = '' } = queryString.parse(location.search);
 
   const [{ searchTerm }, handleChange] = useForm({ searchTerm: q });
-  console.log({ q });
+
+  const heroes = useMemo(() => getHeroesByName(q), [q]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -30,6 +36,7 @@ export const SearchScreen = ({ history }) => {
             className="form-control me-2"
             name="searchTerm"
             onChange={handleChange}
+            placeholder="Type hero name"
             type="text"
             value={searchTerm}
           />
@@ -38,6 +45,8 @@ export const SearchScreen = ({ history }) => {
           </button>
         </form>
       </div>
+
+      <HeroesList heroes={heroes} className="fade-anim" />
     </div>
   );
 };

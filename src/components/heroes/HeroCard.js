@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { HeroInfo } from './HeroInfo';
 
-export const HeroCard = ({ hero }) => {
+export const HeroCard = memo(function HeroCard({ hero }) {
   return (
     <div className="col-md-6 col-xl-4 p-3">
       <Link
@@ -21,4 +22,4 @@ export const HeroCard = ({ hero }) => {
       </Link>
     </div>
   );
-};
+});

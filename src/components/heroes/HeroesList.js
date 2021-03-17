@@ -1,12 +1,10 @@
-import { useRef, useLayoutEffect, useMemo } from 'react';
+import { useRef, useLayoutEffect, memo } from 'react';
 
-import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher';
 import { HeroCard } from './HeroCard';
 import Masonry from 'masonry-layout';
 
-export const HeroesList = ({ publisher }) => {
+export const HeroesList = memo(function Heroeslist({ heroes }) {
   const ref = useRef(null);
-  const heroes = useMemo(() => getHeroesByPublisher(publisher), [publisher]);
 
   // initialize masonry layout
   useLayoutEffect(() => {
@@ -14,7 +12,7 @@ export const HeroesList = ({ publisher }) => {
       // options
       percentPosition: true,
     });
-  }, []);
+  }, [heroes]);
 
   return (
     <div id="masonryGrid" className="row" ref={ref}>
@@ -23,4 +21,4 @@ export const HeroesList = ({ publisher }) => {
       })}
     </div>
   );
-};
+});
