@@ -4,8 +4,8 @@ export const getHeroesByName = (name) => {
   if (!name) {
     return [];
   }
-  name = name.toLowerCase().trim();
+  name = name.toLowerCase().replace(/ /g, '');
   return heroes.filter((hero) =>
-    hero.superhero.toLowerCase().trim().includes(name)
+    hero.superhero.toLowerCase().replace(/ /g, '').includes(name)
   );
 };

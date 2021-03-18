@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import { AnimatePresence } from 'framer-motion';
 
 import { useForm } from '../../hooks/useForm';
 
@@ -25,7 +24,6 @@ export const SearchScreen = ({ history }) => {
     e.preventDefault();
     history.push(`?q=${searchTerm}`);
   };
-  // TODO: check unmount animations
 
   return (
     <div className="fade-anim">
@@ -51,15 +49,13 @@ export const SearchScreen = ({ history }) => {
         </form>
       </div>
 
-      <AnimatePresence>
-        {q === undefined ? (
-          <Alert type="info" message="Start searching!" />
-        ) : heroes.length === 0 ? (
-          <Alert type="warning" message="Not found!" />
-        ) : (
-          <HeroesList heroes={heroes} />
-        )}
-      </AnimatePresence>
+      {q === undefined ? (
+        <Alert type="info" message="Start searching!" />
+      ) : heroes.length === 0 ? (
+        <Alert type="warning" message="Not found!" />
+      ) : (
+        <HeroesList heroes={heroes} />
+      )}
     </div>
   );
 };

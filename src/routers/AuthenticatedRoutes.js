@@ -15,12 +15,12 @@ export const AuthenticatedRoutes = () => {
           <Route
             exact
             path="/marvel"
-            component={() => <HeroesByPublisher publisher="Marvel Comics" />}
+            render={() => <HeroesByPublisher publisher="Marvel Comics" />}
           />
           <Route
             exact
             path="/dc"
-            component={() => <HeroesByPublisher publisher="DC Comics" />}
+            render={() => <HeroesByPublisher publisher="DC Comics" />}
           />
           <Route exact path="/hero/:heroId" component={HeroScreen} />
           <Route exact path="/search" component={SearchScreen} />
