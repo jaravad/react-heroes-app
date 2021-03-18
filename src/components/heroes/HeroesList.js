@@ -1,5 +1,4 @@
 import { useRef, useLayoutEffect, memo } from 'react';
-
 import { HeroCard } from './HeroCard';
 import Masonry from 'masonry-layout';
 
