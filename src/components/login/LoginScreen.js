@@ -11,12 +11,12 @@ export const LoginScreen = ({ history }) => {
 
   const { dispatch } = useContext(AuthContext);
 
-  const action = {
-    type: types.login,
-    payload: { username: 'John Doe' },
-  };
-
   const handleLogin = () => {
+    const action = {
+      type: types.login,
+      payload: { username: 'John Doe' },
+    };
+
     dispatch(action);
     // * Add a history entry
     // history.push('/');
@@ -27,7 +27,7 @@ export const LoginScreen = ({ history }) => {
   };
 
   return (
-    <div className="container py-4">
+    <div className="container py-4 fade-anim">
       <h1 className="pb-2 border-bottom mb-3">LoginScreen</h1>
       <button className="btn btn-primary" onClick={handleLogin}>
         Login

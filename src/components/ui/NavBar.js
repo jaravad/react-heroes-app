@@ -1,11 +1,34 @@
 import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../auth/AuthContext';
+import { types } from '../../types/types';
+import { useHistory } from 'react-router-dom';
+
+/* this component is not receiving 'history' object as prop because it
+  isn't being rendered by a Route component directly, one workaround
+  is to receive 'history' as prop from NavBar's parent component as that
+  one is being rendered by a Route component thus it is receiving
+  'history' as prop. A more clean workaround is to use the react router
+  useHistory hook that retrieves 'history' from the Router Provider  
+*/
 
 export const NavBar = () => {
+  const history = useHistory();
+
   const {
     user: { username },
+    dispatch,
   } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    const action = {
+      type: types.logout,
+    };
+
+    dispatch(action);
+    history.replace('/login');
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
       <div className="container">
@@ -59,14 +82,17 @@ export const NavBar = () => {
               </NavLink>
             </li>
 
-            <li className="nav-item nav-link ms-lg-auto text-info">
+            <li className="nav-item nav-link ms-lg-auto me-lg-2 text-info">
               {username}
             </li>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
+            <li>
+              <button
+                onClick={handleLogout}
+                className=" btn btn-outline-danger"
+              >
                 Logout
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
