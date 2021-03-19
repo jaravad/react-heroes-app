@@ -6,7 +6,7 @@ export const HeroesByPublisher = ({ publisher }) => {
   const heroes = useMemo(() => getHeroesByPublisher(publisher), [publisher]);
 
   return (
-    <div className="fade-anim">
+    <div>
       <h1 className="pb-2 border-bottom">{publisher}</h1>
       <HeroesList heroes={heroes} />
     </div>

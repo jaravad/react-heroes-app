@@ -1,6 +1,11 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../auth/AuthContext';
 
 export const NavBar = () => {
+  const {
+    user: { username },
+  } = useContext(AuthContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
       <div className="container">
@@ -54,15 +59,14 @@ export const NavBar = () => {
               </NavLink>
             </li>
 
-            <li className="nav-item ms-lg-auto">
-              <NavLink
-                exact
-                activeClassName="active"
-                className="nav-link"
-                to="/login"
-              >
+            <li className="nav-item nav-link ms-lg-auto text-info">
+              {username}
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
                 Logout
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </div>
