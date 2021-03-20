@@ -12,6 +12,8 @@ export const LoginScreen = ({ history }) => {
   const { dispatch } = useContext(AuthContext);
 
   const handleLogin = () => {
+    const initialPath = localStorage.getItem('lastPath') || '/';
+
     const action = {
       type: types.login,
       payload: { username: 'John Doe' },
@@ -21,14 +23,14 @@ export const LoginScreen = ({ history }) => {
     // * Add a history entry
     // history.push('/');
     // * Replace current history entry:
-    history.replace('/');
+    history.replace(initialPath);
     /* When replace is used browser's back button won't redirect 
     to the previous history entry as this one was replaced*/
   };
 
   return (
     <div className="container py-4 fade-anim">
-      <h1 className="pb-2 border-bottom mb-3">LoginScreen</h1>
+      <h1 className="pb-2 border-bottom mb-3">Login</h1>
       <button className="btn btn-primary" onClick={handleLogin}>
         Login
       </button>
