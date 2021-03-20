@@ -11,6 +11,7 @@ export const AppRouter = () => {
   const {
     user: { logged },
   } = useContext(AuthContext);
+
   return (
     <Router>
       <Switch>
@@ -20,6 +21,7 @@ export const AppRouter = () => {
           component={LoginScreen}
           isAuthenticated={logged}
         />
+
         <PrivateRoute
           path="/"
           component={AuthenticatedRoutes}
