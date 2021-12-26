@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { HeroInfo } from './HeroInfo';
+import { heroImages } from '../../helpers/heroImages';
 
 export const HeroCard = memo(function HeroCard({ hero }) {
   return (
@@ -12,7 +13,7 @@ export const HeroCard = memo(function HeroCard({ hero }) {
         <div className="col-5 position-relative">
           <div className="img-overlay w-100 h-100 position-absolute"></div>
           <img
-            src={`./assets/${hero.id}.jpg`}
+            src={heroImages(`./${hero.id}.jpg`).default}
             className="object-fit-cover w-100 h-100 position-absolute"
             alt={hero.superhero}
           />

@@ -11,14 +11,14 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.0"
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "build": "react-scripts build",
     "start": "react-scripts start",
     "predeploy": "react-scripts build && cp build/index.html build/200.html",
     "deploy": "surge build/ https://react-heroes-app.surge.sh",
+    "format": "npx prettier --write src",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -39,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
   }
 }

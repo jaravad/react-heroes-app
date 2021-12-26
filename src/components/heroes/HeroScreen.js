@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useParams, Redirect } from 'react-router-dom';
 import { getHeroById } from '../../selectors/getHeroById';
 import { HeroInfo } from './HeroInfo';
+import { heroImages } from '../../helpers/heroImages';
 
 export const HeroScreen = ({ history }) => {
   const { heroId } = useParams();
@@ -17,7 +18,7 @@ export const HeroScreen = ({ history }) => {
         <div className="col-10 col-sm-6 col-lg-3 shadow object-fit-cover rounded p-2 align-self-center from-bottom-anim">
           <img
             className="img-fluid rounded"
-            src={`../assets/${heroId}.jpg`}
+            src={heroImages(`./${heroId}.jpg`).default}
             alt=""
           />
         </div>

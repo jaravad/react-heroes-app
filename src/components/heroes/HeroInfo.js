@@ -3,8 +3,8 @@ export const HeroInfo = ({
   showMore,
   superhero,
   publisher,
-  alter_ego,
-  first_appearance,
+  alterEgo,
+  firstAppearance,
   characters,
 }) => {
   return (
@@ -19,9 +19,9 @@ export const HeroInfo = ({
         {publisher}
       </span>
 
-      <p className="small lh-sm text-muted mb-2">Also known as {alter_ego}</p>
+      <p className="small lh-sm text-muted mb-2">Also known as {alterEgo}</p>
 
-      {(alter_ego !== characters || !showMore) && (
+      {(alterEgo !== characters || !showMore) && (
         <p className="lh-sm">
           Also has appeared as <em>{characters}</em>
         </p>
@@ -29,7 +29,7 @@ export const HeroInfo = ({
 
       <div className="alert alert-light border small" role="alert">
         First appeared on: <br />
-        <span className="fw-medium">'{first_appearance}'</span>
+        <span className="fw-medium">'{firstAppearance}'</span>
       </div>
 
       {showMore && (
